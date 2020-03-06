@@ -1,0 +1,13 @@
+﻿Attempting to gather dependency information for package 'Swashbuckle.5.5.3' with respect to project 'WebApiSampleProject', targeting '.NETFramework,Version=v4.5.1'
+Attempting to resolve dependencies for package 'Swashbuckle.5.5.3' with DependencyBehavior 'Lowest'
+Resolving actions to install package 'Swashbuckle.5.5.3'
+Resolved actions to install package 'Swashbuckle.5.5.3'
+Removed package 'Swashbuckle.5.6.0' from 'packages.config'
+Successfully uninstalled 'Swashbuckle.5.6.0' from WebApiSampleProject
+Adding package 'Swashbuckle.5.5.3' to folder 'F:\Source\WebApiSampleProject\packages'
+Added package 'Swashbuckle.5.5.3' to folder 'F:\Source\WebApiSampleProject\packages'
+Added package 'Swashbuckle.5.5.3' to 'packages.config'
+Successfully installed 'Swashbuckle 5.5.3' to WebApiSampleProject
+Removing package 'Swashbuckle.5.6.0' from folder 'F:\Source\WebApiSampleProject\packages'
+Removed package 'Swashbuckle.5.6.0' from folder 'F:\Source\WebApiSampleProject\packages'
+========== Finished ==========
