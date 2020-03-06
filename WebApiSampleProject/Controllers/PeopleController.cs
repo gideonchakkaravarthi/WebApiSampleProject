@@ -12,6 +12,7 @@ namespace WebApiSampleProject.Controllers
         private ContosoUniversityEntities db = new ContosoUniversityEntities();
 
         // GET: api/People
+        [HttpGet]
         public IQueryable<Person> GetPeople()
         {
             return db.People;
