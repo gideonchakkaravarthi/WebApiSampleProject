@@ -13,7 +13,7 @@ namespace WebApiSampleProject.Controllers
 
         // GET: api/People
         [HttpGet]
-        public IQueryable<Person> GetPeople()
+        public IQueryable<Person> GetPeople1()
         {
             return db.People;
         }
