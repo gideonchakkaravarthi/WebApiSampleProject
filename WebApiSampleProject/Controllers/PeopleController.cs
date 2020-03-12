@@ -3,10 +3,12 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace WebApiSampleProject.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PeopleController : ApiController
     {
         private ContosoUniversityEntities db = new ContosoUniversityEntities();
