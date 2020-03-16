@@ -16,7 +16,7 @@ namespace WebApiSampleProject.Controllers
 
         // GET: api/People
         [HttpGet]
-      
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Person> GetPeople()
         {
             return db.People;
@@ -24,7 +24,8 @@ namespace WebApiSampleProject.Controllers
 
         // GET: api/People/5
         [ResponseType(typeof(Person))]
-       
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        
         public IHttpActionResult GetPerson(int id)
         {
             Person person = db.People.Find(id);
@@ -37,7 +38,8 @@ namespace WebApiSampleProject.Controllers
         }
 
         // PUT: api/People/5
-        [ResponseType(typeof(void))]     
+        [ResponseType(typeof(void))]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PutPerson(int id, Person person)
         {
             if (!ModelState.IsValid)
@@ -73,7 +75,8 @@ namespace WebApiSampleProject.Controllers
 
         // POST: api/People
         [ResponseType(typeof(Person))]
-         public IHttpActionResult PostPerson(Person person)
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult PostPerson(Person person)
         {
             if (!ModelState.IsValid)
             {
@@ -88,6 +91,7 @@ namespace WebApiSampleProject.Controllers
 
         // DELETE: api/People/5
         [ResponseType(typeof(Person))]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeletePerson(int id)
         {
             Person person = db.People.Find(id);
