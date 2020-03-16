@@ -9,9 +9,11 @@ namespace WebApiSampleProject
         {
             // Web API configuration and services
         
-            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
-            
+            //EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");          
+              config.EnableCors();
+
+            // config.EnableCors(cors);
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

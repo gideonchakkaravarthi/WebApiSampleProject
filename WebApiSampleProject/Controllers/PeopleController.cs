@@ -3,18 +3,20 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 
 namespace WebApiSampleProject.Controllers
 {
-    [System.Web.Http.Cors.EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors("*", "*", "*")]
     public class PeopleController : ApiController
     {
         private ContosoUniversityEntities db = new ContosoUniversityEntities();
 
         // GET: api/People
         [HttpGet]
+      
         public IQueryable<Person> GetPeople()
         {
             return db.People;
@@ -22,6 +24,7 @@ namespace WebApiSampleProject.Controllers
 
         // GET: api/People/5
         [ResponseType(typeof(Person))]
+       
         public IHttpActionResult GetPerson(int id)
         {
             Person person = db.People.Find(id);
@@ -34,7 +37,7 @@ namespace WebApiSampleProject.Controllers
         }
 
         // PUT: api/People/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(void))]     
         public IHttpActionResult PutPerson(int id, Person person)
         {
             if (!ModelState.IsValid)
@@ -70,7 +73,7 @@ namespace WebApiSampleProject.Controllers
 
         // POST: api/People
         [ResponseType(typeof(Person))]
-        public IHttpActionResult PostPerson(Person person)
+         public IHttpActionResult PostPerson(Person person)
         {
             if (!ModelState.IsValid)
             {
