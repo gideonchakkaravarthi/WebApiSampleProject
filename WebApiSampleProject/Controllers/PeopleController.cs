@@ -4,28 +4,26 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Web.Http.Description;
 
 
 namespace WebApiSampleProject.Controllers
 {
-    [EnableCors("*", "*", "*")]
+    [EnableCors("http://localhost:32814/api/People", "*", "*")]
     public class PeopleController : ApiController
     {
         private ContosoUniversityEntities db = new ContosoUniversityEntities();
 
         // GET: api/People
         [HttpGet]
-        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        [Route("api/People/GetPeople")]
         public IQueryable<Person> GetPeople()
         {
             return db.People;
         }
 
         // GET: api/People/5
-        [ResponseType(typeof(Person))]
-        //[EnableCors(origins: "*", headers: "*", methods: "*")]
-        
+        [HttpGet]
+        [Route("api/People/GetPerson")]
         public IHttpActionResult GetPerson(int id)
         {
             Person person = db.People.Find(id);
@@ -37,9 +35,25 @@ namespace WebApiSampleProject.Controllers
             return Ok(person);
         }
 
-        // PUT: api/People/5
-        [ResponseType(typeof(void))]
-        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        // POST: api/People
+        //[ResponseType(typeof(Person))]
+        [HttpPost]
+        [Route("api/People/PostPerson")]
+        public IHttpActionResult PostPerson(Person person)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.People.Add(person);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = person.ID }, person);
+        }
+
+        [HttpPost]
+        [Route("api/People/PutPerson")]
         public IHttpActionResult PutPerson(int id, Person person)
         {
             if (!ModelState.IsValid)
@@ -73,25 +87,9 @@ namespace WebApiSampleProject.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/People
-        [ResponseType(typeof(Person))]
-        //[EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult PostPerson(Person person)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.People.Add(person);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = person.ID }, person);
-        }
-
+        [HttpDelete]
         // DELETE: api/People/5
-        [ResponseType(typeof(Person))]
-        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        [Route("api/People/DeletePerson")]   
         public IHttpActionResult DeletePerson(int id)
         {
             Person person = db.People.Find(id);

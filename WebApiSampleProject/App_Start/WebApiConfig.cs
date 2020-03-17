@@ -9,8 +9,12 @@ namespace WebApiSampleProject
         {
             // Web API configuration and services
         
-            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");          
+            EnableCorsAttribute cors = new EnableCorsAttribute("http://localhost:32814/api/People", "*", "*");          
               config.EnableCors();
+
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             // config.EnableCors(cors);
 
